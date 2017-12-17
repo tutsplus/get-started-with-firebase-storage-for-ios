@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.19" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q3C-c2-ltq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q3C-c2-ltq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.16"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--Profile-->
         <scene sceneID="Gp5-vF-RL7">
             <objects>
-                <viewController id="Q3C-c2-ltq" customClass="HomeViewController" customModule="FirebaseDo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Profile" id="Q3C-c2-ltq" customClass="HomeViewController" customModule="FirebaseDo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="04O-CS-FYO"/>
                         <viewControllerLayoutGuide type="bottom" id="wAl-yN-dgs"/>
@@ -21,25 +21,65 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="envato-logo" translatesAutoresizingMaskIntoConstraints="NO" id="3nn-xv-gww">
-                                <rect key="frame" x="0.0" y="183" width="375" height="301"/>
-                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="HJ7-9V-AXh">
+                                <rect key="frame" x="25" y="45" width="325" height="597"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set your profile photo below." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6T-5R-1Qh">
+                                        <rect key="frame" x="0.0" y="0.0" width="325" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_profile" translatesAutoresizingMaskIntoConstraints="NO" id="hs8-S7-kyx">
+                                        <rect key="frame" x="0.0" y="76" width="325" height="521"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="hs8-S7-kyx" firstAttribute="top" secondItem="HJ7-9V-AXh" secondAttribute="top" constant="76" id="Rmf-qh-lOf"/>
+                                </constraints>
+                            </stackView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bOy-ZN-BGD">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="bookmarks" id="I8I-l0-FzO">
+                                        <connections>
+                                            <action selector="libraryAction:" destination="Q3C-c2-ltq" id="OJC-Od-sxX"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="akh-pJ-jHN"/>
+                                    <barButtonItem systemItem="camera" id="5k5-SC-ZIK">
+                                        <connections>
+                                            <action selector="cameraAction:" destination="Q3C-c2-ltq" id="ivq-59-d8w"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="3nn-xv-gww" firstAttribute="centerY" secondItem="2o6-Hq-0cc" secondAttribute="centerY" id="2vM-rQ-ai0"/>
-                            <constraint firstAttribute="trailing" secondItem="3nn-xv-gww" secondAttribute="trailing" id="52R-ej-pSO"/>
-                            <constraint firstItem="3nn-xv-gww" firstAttribute="top" secondItem="04O-CS-FYO" secondAttribute="bottom" constant="163" id="uB5-GV-MDI"/>
-                            <constraint firstItem="3nn-xv-gww" firstAttribute="leading" secondItem="2o6-Hq-0cc" secondAttribute="leading" id="vZf-v8-BmA"/>
+                            <constraint firstItem="bOy-ZN-BGD" firstAttribute="centerX" secondItem="HJ7-9V-AXh" secondAttribute="centerX" id="6Te-nn-Mky"/>
+                            <constraint firstAttribute="trailing" secondItem="HJ7-9V-AXh" secondAttribute="trailing" constant="25" id="8AR-WH-jup"/>
+                            <constraint firstItem="wAl-yN-dgs" firstAttribute="top" secondItem="bOy-ZN-BGD" secondAttribute="bottom" id="8my-hM-2ah"/>
+                            <constraint firstItem="HJ7-9V-AXh" firstAttribute="top" secondItem="04O-CS-FYO" secondAttribute="bottom" constant="25" id="KBJ-8Q-FyP"/>
+                            <constraint firstItem="wAl-yN-dgs" firstAttribute="top" secondItem="HJ7-9V-AXh" secondAttribute="bottom" constant="25" id="OZ1-MA-bAV"/>
+                            <constraint firstItem="bOy-ZN-BGD" firstAttribute="leading" secondItem="2o6-Hq-0cc" secondAttribute="leading" id="ZGe-4e-9qn"/>
+                            <constraint firstItem="HJ7-9V-AXh" firstAttribute="leading" secondItem="2o6-Hq-0cc" secondAttribute="leading" constant="25" id="vx9-47-GhE"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="5SZ-IN-F2b"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="myImageView" destination="hs8-S7-kyx" id="jKK-Vx-WQC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rR2-Sz-NFV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="688.79999999999995" y="-725.48725637181417"/>
+            <point key="canvasLocation" x="1028" y="-725.48725637181417"/>
         </scene>
     </scenes>
     <resources>
-        <image name="envato-logo" width="696" height="280"/>
+        <image name="no_profile" width="64" height="64"/>
     </resources>
 </document>

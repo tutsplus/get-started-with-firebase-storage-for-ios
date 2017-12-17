@@ -13,7 +13,6 @@
 		C48B10111F0AF8E6001F0E66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C48B100F1F0AF8E6001F0E66 /* Main.storyboard */; };
 		C48B10131F0AF8E6001F0E66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C48B10121F0AF8E6001F0E66 /* Assets.xcassets */; };
 		C48B10161F0AF8E6001F0E66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C48B10141F0AF8E6001F0E66 /* LaunchScreen.storyboard */; };
-		C48B101E1F0AFB5F001F0E66 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48B101D1F0AFB5F001F0E66 /* MasterViewController.swift */; };
 		C48B10201F0AFC85001F0E66 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C48B101F1F0AFC85001F0E66 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -27,7 +26,6 @@
 		C48B10121F0AF8E6001F0E66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C48B10151F0AF8E6001F0E66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C48B10171F0AF8E6001F0E66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C48B101D1F0AFB5F001F0E66 /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		C48B101F1F0AFC85001F0E66 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		C4D3E4981F1C6508000DE13F /* FirebaseDo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FirebaseDo.entitlements; sourceTree = "<group>"; };
 		D651B1AAF9BFC6E7F5D2B53C /* Pods_FirebaseDo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirebaseDo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,7 +84,6 @@
 				C4D3E4981F1C6508000DE13F /* FirebaseDo.entitlements */,
 				C48B100B1F0AF8E6001F0E66 /* AppDelegate.swift */,
 				C48B100D1F0AF8E6001F0E66 /* HomeViewController.swift */,
-				C48B101D1F0AFB5F001F0E66 /* MasterViewController.swift */,
 				C48B100F1F0AF8E6001F0E66 /* Main.storyboard */,
 				C48B10121F0AF8E6001F0E66 /* Assets.xcassets */,
 				C48B10141F0AF8E6001F0E66 /* LaunchScreen.storyboard */,
@@ -229,7 +226,6 @@
 			files = (
 				C48B100E1F0AF8E6001F0E66 /* HomeViewController.swift in Sources */,
 				C48B100C1F0AF8E6001F0E66 /* AppDelegate.swift in Sources */,
-				C48B101E1F0AFB5F001F0E66 /* MasterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,7 +367,7 @@
 				DEVELOPMENT_TEAM = UU98N6FWB5;
 				INFOPLIST_FILE = FirebaseDo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.doronkatz.FirebaseDo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.doronkatz.firebaseDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
@@ -387,7 +383,7 @@
 				DEVELOPMENT_TEAM = UU98N6FWB5;
 				INFOPLIST_FILE = FirebaseDo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.doronkatz.FirebaseDo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.doronkatz.firebaseDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;

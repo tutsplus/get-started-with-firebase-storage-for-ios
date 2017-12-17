@@ -1,4 +1,5 @@
 PODS:
+  - ASProgressHud (1.0.4)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
     - Bolts/Tasks (= 1.8.4)
@@ -107,10 +108,12 @@ PODS:
     - TwitterCore (>= 2.8)
 
 DEPENDENCIES:
+  - ASProgressHud
   - FirebaseUI
   - TwitterCore (<= 2.8.0)
 
 SPEC CHECKSUMS:
+  ASProgressHud: 18e3caf78492962f55c906fbd591af28cd99fdd3
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
   FBSDKCoreKit: 6f139173dc63a1deaff4430a55f2fe5bb222d2af
@@ -133,6 +136,6 @@ SPEC CHECKSUMS:
   TwitterCore: e959987be23c767004d29eb7fab8d85d8585a2e5
   TwitterKit: 3b6044a7320340326a4098f3e37aa1dbaeb94942
 
-PODFILE CHECKSUM: 87c427a63a609ca761ad79dadfe8c76bf65974e3
+PODFILE CHECKSUM: ca678c6b5904c8e39ce19fb68432bb6531904eb4
 
 COCOAPODS: 1.2.1

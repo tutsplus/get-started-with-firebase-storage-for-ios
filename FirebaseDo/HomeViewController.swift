@@ -9,15 +9,21 @@
 import UIKit
 import Firebase
 import FirebaseAuthUI
+import FirebaseStorageUI
 import FirebasePhoneAuthUI
+import ASProgressHud
 
-class HomeViewController: UIViewController, FUIAuthDelegate {
+class HomeViewController: UIViewController, FUIAuthDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
+    
+    @IBOutlet weak var myImageView: UIImageView!
+    let picker = UIImagePickerController()
+    
     
     fileprivate(set) var auth:Auth?
     fileprivate(set) var authUI: FUIAuth? //only set internally but get externally
     fileprivate(set) var authStateListenerHandle: AuthStateDidChangeListenerHandle?
+
     
-  
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -32,6 +38,34 @@ class HomeViewController: UIViewController, FUIAuthDelegate {
             }
         }
         
+        self.picker.delegate = self
+        self.refreshProfileImage()
+        
+    }
+    
+    func refreshProfileImage(){
+        if let user = Auth.auth().currentUser{
+            let store = Storage.storage()
+            let storeRef = store.reference().child("images/\(user.uid)/profile_photo.jpg")
+            
+            storeRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                if let error = error {
+                    print("error: \(error.localizedDescription)")
+                } else {
+                    // Data for "images/island.jpg" is returned
+                    let image = UIImage(data: data!)
+                    self.myImageView.image = image
+                }
+            }
+            
+            
+            self.myImageView.sd_setImage(with: storeRef, placeholderImage: UIImage(named:"no_profile"))
+        }else{
+            print("You should be logged in")
+            self.loginAction(sender: self)
+            return
+        }
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -54,8 +88,64 @@ class HomeViewController: UIViewController, FUIAuthDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+
+    
+    @IBAction func cameraAction(_ sender: Any) {
+        self.picker.allowsEditing = false
+        self.picker.sourceType = UIImagePickerControllerSourceType.camera
+        self.picker.cameraCaptureMode = .photo
+        self.picker.modalPresentationStyle = .fullScreen
+        self.present(picker,animated: true,completion: nil)
+    }
+    
+    @IBAction func libraryAction(_ sender: Any) {
+        self.picker.allowsEditing = false
+        self.picker.sourceType = .photoLibrary
+        self.picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        self.present(picker, animated: true, completion: {
+            print("handle saving")
+        })
+    }
 
 
+}
+
+//MARK: UIImagePickerView delegate methods
+extension HomeViewController{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        self.dismiss(animated: true, completion: nil)
+
+        let profileImageFromPicker = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+        
+        let imageData: Data = UIImageJPEGRepresentation(profileImageFromPicker, 0.5)!
+        
+        let store = Storage.storage()
+        let user = Auth.auth().currentUser
+        if let user = user{
+            let storeRef = store.reference().child("images/\(user.uid)/profile_photo.jpg")
+            ASProgressHud.showHUDAddedTo(self.view, animated: true, type: .default)
+            let _ = storeRef.putData(imageData, metadata: metadata) { (metadata, error) in
+                ASProgressHud.hideHUDForView(self.view, animated: true)
+                guard let _ = metadata else {
+                    print("error occured: \(error.debugDescription)")
+                    return
+                }
+
+
+                self.myImageView.image = profileImageFromPicker
+            }
+            
+        }
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 ///MARK: Login Extensions
@@ -63,7 +153,10 @@ extension HomeViewController{
     @IBAction func loginAction(sender: AnyObject) {
         // Present the default login view controller provided by authUI
         let authViewController = authUI?.authViewController();
-        self.present(authViewController!, animated: true, completion: nil)
+        self.present(authViewController!, animated: true, completion:{
+            self.refreshProfileImage()
+            
+        })
     }
     
     
@@ -84,6 +177,8 @@ extension HomeViewController{
     }
     
 }
+
+
 
 
 

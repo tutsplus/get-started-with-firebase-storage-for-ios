@@ -8,5 +8,6 @@ target 'FirebaseDo' do
   # Pods for FirebaseDo
   pod 'FirebaseUI'
   pod 'TwitterCore', '<=2.8.0' # fixed
+  pod "ASProgressHud"
   
 end
