@@ -59,7 +59,6 @@ class HomeViewController: UIViewController, FUIAuthDelegate, UIImagePickerContro
             }
             
             
-            self.myImageView.sd_setImage(with: storeRef, placeholderImage: UIImage(named:"no_profile"))
         }else{
             print("You should be logged in")
             self.loginAction(sender: self)
